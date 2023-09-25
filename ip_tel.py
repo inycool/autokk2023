@@ -17,9 +17,6 @@ import pyperclip
 program_path = "C:\Program Files (x86)\FACT_TACT\TACT\TACT_CLIENT2\TACTClient.exe"
 subprocess.Popen(program_path)
 time.sleep(2)
-# import pygetwindow as gw
-# window = gw.getWindowsWithTitle("TACT 클라이언트 (Ver 2.4.0.9) ::: Online")[0]
-# window.activate()
 
 num1=pyautogui.locateCenterOnScreen('tlo1.png')
 pyautogui.click(num1)
@@ -49,3 +46,4 @@ pyautogui.write(data_to_copy)
 num5=pyautogui.locateCenterOnScreen('c3.png')
 time.sleep(1)
 pyautogui.click(num5)
+
