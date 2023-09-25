@@ -1,21 +1,3 @@
-# import pandas as pd
-# # CSV 파일 불러오기
-# df = pd.read_excel("testlist.xlsx")
-# # 데이터프레임의 상위 몇 개 행 출력 (기본값은 5개)
-# print(df.head())
-
-# import os
-# import subprocess
-# env = os.environ
-# newpath = r"C:\Program Files (x86)\FACT_TACT\TACT\TACT_CLIENT2;"+env['PATH']
-# env['PATH'] = newpath 
-# r = subprocess.run('TACTClient.exe push1.tcl',shell=True, capture_output=True, text=True) 
-# # CompletedProcess returned
-# print(r.args)
-# print(r.returncode)
-# print(r.stderr)
-# print(r.stdout)
-
 # 윈도우 관리자 권한 얻어 실행
 import sys
 import os
@@ -36,7 +18,7 @@ program_path = "C:\Program Files (x86)\FACT_TACT\TACT\TACT_CLIENT2\TACTClient.ex
 subprocess.Popen(program_path)
 time.sleep(2)
 import pygetwindow as gw
-window = gw.getWindowsWithTitle("TACT 클라이언트 (Ver 2.4.0.8) ::: Online")[0]
+window = gw.getWindowsWithTitle("TACT 클라이언트 (Ver 2.4.0.9) ::: Online")[0]
 window.activate()
 
 num1=pyautogui.locateCenterOnScreen('tlo1.png')
@@ -67,6 +49,3 @@ pyautogui.write(data_to_copy)
 num5=pyautogui.locateCenterOnScreen('c3.png')
 time.sleep(1)
 pyautogui.click(num5)
-
-
-
