@@ -16,7 +16,16 @@
 # print(r.stderr)
 # print(r.stdout)
 
-# 마우스 이동 클릭 >> 이동가능,클릭불가(TACT), 웹, 탐색기 정상 클릭됨
+# 윈도우 관리자 권한 얻어 실행
+import sys
+import os
+import win32com.shell.shell as shell
+if sys.argv[-1] != 'asadmin':
+    script = os.path.abspath(sys.argv[0])
+    params = ' '.join([script] + sys.argv[1:] + ['asadmin'])
+    shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+
+# 마우스 이동 클릭 >> 이동가능,클릭불가(TACT)
 import subprocess
 import pyautogui
 import time
@@ -35,7 +44,7 @@ pyautogui.click(num1)
 num2=pyautogui.locateCenterOnScreen('tlo2.png')
 pyautogui.click(num2)
 time.sleep(12)
-# 실행 후 마우스이동,클릭하기
+# 마우스 포인터위치 확인, 마우스 위치 스크린샷 저장
 # #print(pyautogui.position())
 # #pyautogui.screenshot('tlo1.png',region=(1250, 588,39,20))
 num3=pyautogui.locateCenterOnScreen('c1.png')
@@ -44,26 +53,20 @@ time.sleep(1)
 num4=pyautogui.locateCenterOnScreen('c2.png')
 pyautogui.click(num4)
 # 파일에서 첫 번째 행, 첫 번째 열의 내용 읽어오기
-with open("iptest.log", "r") as file:
-    first_line = file.readline().strip().split()[0]
 
-# 클립보드에 복사
-pyperclip.copy(first_line)
-import keyboard
-keyboard.press_and_release("ctrl+v")
-    
+import pandas as pd
+csv_file_path='iptest.csv'
+# csv파일에서 데이터 읽기
+df=pd.read_csv(csv_file_path)
+# 데이터 프레임의 첫 열, 첫 행 데이터를 가져오기
+data_to_copy=df.iloc[0,0]
+# 데이터 클립보드에 복사
+pyautogui.write(data_to_copy)
+
+# "연결" 클릭
 num5=pyautogui.locateCenterOnScreen('c3.png')
 time.sleep(1)
 pyautogui.click(num5)
 
-# pyautogui.click(x=31,y=264)
-# pyautogui.click(x=31,y=264)
 
-# 윈도우 관리자 권한 얻어 실행하는 방법
-# import sys
-# import os
-# import win32com.shell.shell as shell
-# if sys.argv[-1] != 'asadmin':
-#     script = os.path.abspath(sys.argv[0])
-#     params = ' '.join([script] + sys.argv[1:] + ['asadmin'])
-#     shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+
