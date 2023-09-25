@@ -25,7 +25,7 @@ if sys.argv[-1] != 'asadmin':
     params = ' '.join([script] + sys.argv[1:] + ['asadmin'])
     shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
 
-# 마우스 이동 클릭 >> 이동가능,클릭불가(TACT)
+# 마우스 이동 클릭 >> 이동 클릭OK(TACT)
 import subprocess
 import pyautogui
 import time
